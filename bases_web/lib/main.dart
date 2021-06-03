@@ -1,7 +1,14 @@
 import 'package:bases_web/router/route_generator.dart';
+import 'package:bases_web/services/navigation_service.dart';
+import 'package:bases_web/ui/layout/main_layout_page.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'locator.dart';
+
+void main() {
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,6 +21,12 @@ class MyApp extends StatelessWidget {
       //   '/provider': (_) => CounterProviderPage(),
       // },
       onGenerateRoute: RouteGenerator.generateRoute,
+      navigatorKey: locator<NavigationService>().navigatorKey,
+      builder: (_, child) {
+        return MainLayoutPage(
+          child: child ?? CircularProgressIndicator(),
+        );
+      },
     );
   }
 }
