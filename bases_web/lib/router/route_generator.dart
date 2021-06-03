@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:bases_web/ui/pages/counter_page.dart';
 import 'package:bases_web/ui/pages/counter_provider_page.dart';
 import 'package:bases_web/ui/pages/page_404.dart';
-import 'package:flutter/material.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -23,10 +25,17 @@ class RouteGenerator {
       // Tiene animacion, se puede acelerar con duration o se puede
       // hacer de manera brusca solo retornando el child
       transitionDuration: Duration(milliseconds: 200),
-      transitionsBuilder: (_, animation, __, ___) => FadeTransition(
-        opacity: animation,
-        child: child,
-      ),
+      transitionsBuilder: (_, animation, __, ___) => (kIsWeb)
+          ? FadeTransition(
+              opacity: animation,
+              child: child,
+            )
+          : CupertinoPageTransition(
+              primaryRouteAnimation: animation,
+              secondaryRouteAnimation: __,
+              child: child,
+              linearTransition: true,
+            ),
     );
   }
 }

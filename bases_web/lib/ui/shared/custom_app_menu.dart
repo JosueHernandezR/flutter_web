@@ -6,6 +6,7 @@ class CustomAppMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('AppBar creado');
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 20,
