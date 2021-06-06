@@ -35,7 +35,6 @@ class _TableDesktopMenu extends StatelessWidget {
             // onPressed: () => Navigator.pushNamed(context, '/stateful'),
             onPressed: () =>
                 locator<NavigationService>().navigateTo('/stateful'),
-
             color: Colors.black,
           ),
           SizedBox(
@@ -46,7 +45,6 @@ class _TableDesktopMenu extends StatelessWidget {
             // onPressed: () => Navigator.pushNamed(context, '/provider'),
             onPressed: () =>
                 locator<NavigationService>().navigateTo('/provider'),
-
             color: Colors.black,
           ),
           SizedBox(
@@ -56,7 +54,13 @@ class _TableDesktopMenu extends StatelessWidget {
             text: 'Otra página',
             // onPressed: () => Navigator.pushNamed(context, '/prueba'),
             onPressed: () => locator<NavigationService>().navigateTo('/prueba'),
-
+            color: Colors.black,
+          ),
+          CustomFlatButton(
+            text: 'Stateful 100',
+            // onPressed: () => Navigator.pushNamed(context, '/stateful'),
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/stateful/100'),
             color: Colors.black,
           ),
         ],
