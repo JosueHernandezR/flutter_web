@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:landing_page_example/providers/page_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'custom_menu_item.dart';
 
@@ -13,8 +15,11 @@ class CustomAppMenu extends StatefulWidget {
 
 class _CustomAppMenuState extends State<CustomAppMenu>
     with SingleTickerProviderStateMixin {
+      
   bool isOpen = false;
   late AnimationController controller;
+
+
   @override
   void initState() {
     super.initState();
@@ -28,6 +33,8 @@ class _CustomAppMenuState extends State<CustomAppMenu>
 
   @override
   Widget build(BuildContext context) {
+    final pageProvider = Provider.of<PageProvider>(context, listen: false);
+
     return FadeInLeft(
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
@@ -55,27 +62,27 @@ class _CustomAppMenuState extends State<CustomAppMenu>
                   CustomMenuItem(
                     text: 'Home',
                     delay: 0,
-                    onPressed: () {},
+                    onPressed: () => pageProvider.goTo(0),
                   ),
                   CustomMenuItem(
                     text: 'About',
                     delay: 30,
-                    onPressed: () {},
+                    onPressed: () => pageProvider.goTo(1),
                   ),
                   CustomMenuItem(
                     text: 'Pricing',
                     delay: 60,
-                    onPressed: () {},
+                    onPressed: () => pageProvider.goTo(2),
                   ),
                   CustomMenuItem(
                     text: 'Contact',
                     delay: 90,
-                    onPressed: () {},
+                    onPressed: () => pageProvider.goTo(3),
                   ),
                   CustomMenuItem(
                     text: 'Location',
                     delay: 120,
-                    onPressed: () {},
+                    onPressed: () => pageProvider.goTo(4),
                   ),
                   SizedBox(
                     height: 8,

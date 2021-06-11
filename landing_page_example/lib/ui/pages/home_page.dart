@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page_example/providers/page_provider.dart';
 import 'package:landing_page_example/ui/shared/custom_app_menu.dart';
 import 'package:landing_page_example/ui/views/about_view.dart';
 import 'package:landing_page_example/ui/views/contact_view.dart';
 import 'package:landing_page_example/ui/views/home_view.dart';
 import 'package:landing_page_example/ui/views/location_view.dart';
 import 'package:landing_page_example/ui/views/pricing_view.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -50,18 +52,18 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: PageView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        children: [
-          HomeView(),
-          AboutView(),
-          PricingView(),
-          ContactView(),
-          LocationView(),
-        ],
-      ),
+    final pageProvider = Provider.of<PageProvider>(context, listen: false);
+    return PageView(
+      controller: pageProvider.scrollController,
+      physics: BouncingScrollPhysics(),
+      scrollDirection: Axis.vertical,
+      children: [
+        HomeView(),
+        AboutView(),
+        PricingView(),
+        ContactView(),
+        LocationView(),
+      ],
     );
   }
 }

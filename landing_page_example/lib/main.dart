@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page_example/providers/page_provider.dart';
 import 'package:landing_page_example/router/router.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(AppState());
+
+class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => PageProvider()),
+      ],
+      child: MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatefulWidget {
   @override
