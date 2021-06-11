@@ -11,26 +11,34 @@ class CustomAppMenu extends StatefulWidget {
 class _CustomAppMenuState extends State<CustomAppMenu> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      width: 150,
-      height: 50,
-      color: Colors.black,
-      child: Row(
-        children: [
-          Text(
-            'Menú',
-            style: GoogleFonts.roboto(
-              color: Colors.white,
-              fontSize: 18,
-            ),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () {
+          print('click');
+        },
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          width: 150,
+          height: 50,
+          color: Colors.black,
+          child: Row(
+            children: [
+              Text(
+                'Menú',
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
+              ),
+              Spacer(),
+              Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
+            ],
           ),
-          Spacer(),
-          Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-        ],
+        ),
       ),
     );
   }
