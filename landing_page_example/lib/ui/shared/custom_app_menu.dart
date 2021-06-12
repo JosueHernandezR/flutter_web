@@ -15,10 +15,8 @@ class CustomAppMenu extends StatefulWidget {
 
 class _CustomAppMenuState extends State<CustomAppMenu>
     with SingleTickerProviderStateMixin {
-      
   bool isOpen = false;
   late AnimationController controller;
-
 
   @override
   void initState() {
@@ -35,61 +33,54 @@ class _CustomAppMenuState extends State<CustomAppMenu>
   Widget build(BuildContext context) {
     final pageProvider = Provider.of<PageProvider>(context, listen: false);
 
-    return FadeInLeft(
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () {
-            if (isOpen) {
-              controller.reverse();
-            } else {
-              controller.forward();
-            }
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () {
+          if (isOpen) {
+            controller.reverse();
+          } else {
+            controller.forward();
+          }
 
-            setState(() {
-              isOpen = !isOpen;
-            });
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            width: 150,
-            height: isOpen ? 308 : 50,
-            color: Colors.black,
-            child: Column(
-              children: [
-                _MenuTitle(isOpen: isOpen, controller: controller),
-                if (isOpen) ...{
-                  CustomMenuItem(
+          setState(() {
+            isOpen = !isOpen;
+          });
+        },
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          width: 150,
+          height: isOpen ? 308 : 50,
+          color: Colors.black,
+          child: Column(
+            children: [
+              _MenuTitle(isOpen: isOpen, controller: controller),
+              if (isOpen) ...{
+                CustomMenuItem(
                     text: 'Home',
                     delay: 0,
-                    onPressed: () => pageProvider.goTo(0),
-                  ),
-                  CustomMenuItem(
+                    onPressed: () => pageProvider.goTo(0)),
+                CustomMenuItem(
                     text: 'About',
                     delay: 30,
-                    onPressed: () => pageProvider.goTo(1),
-                  ),
-                  CustomMenuItem(
+                    onPressed: () => pageProvider.goTo(1)),
+                CustomMenuItem(
                     text: 'Pricing',
                     delay: 60,
-                    onPressed: () => pageProvider.goTo(2),
-                  ),
-                  CustomMenuItem(
+                    onPressed: () => pageProvider.goTo(2)),
+                CustomMenuItem(
                     text: 'Contact',
                     delay: 90,
-                    onPressed: () => pageProvider.goTo(3),
-                  ),
-                  CustomMenuItem(
+                    onPressed: () => pageProvider.goTo(3)),
+                CustomMenuItem(
                     text: 'Location',
                     delay: 120,
-                    onPressed: () => pageProvider.goTo(4),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                }
-              ],
-            ),
+                    onPressed: () => pageProvider.goTo(4)),
+                SizedBox(
+                  height: 8,
+                ),
+              }
+            ],
           ),
         ),
       ),

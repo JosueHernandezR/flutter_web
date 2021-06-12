@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
+      title: 'Landing Page',
       initialRoute: '/home',
       onGenerateRoute: Flurorouter.router.generator,
     );
